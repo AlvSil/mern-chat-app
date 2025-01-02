@@ -1,0 +1,17 @@
+{
+  "name": "mern-chat-app-server",
+  "version": "1.0.0",
+  "description": "real time chat application server",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Alvaro Silva",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.21.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.9"
+  }
+}
