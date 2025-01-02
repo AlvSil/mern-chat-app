@@ -1,0 +1,13 @@
+This is part of my 2025 goal of creating commits every day.
+
+By doing this, I am hoping to allocate time to work on cool projects.
+
+This will be project 1 - real time chat app
+
+Tech:
+- node
+- express
+- react
+- redux
+- mongodb
+- using socket io for real time communication
