@@ -21,4 +21,23 @@ router.get('/get-logged-user', authMiddleware, async(req, res) => {
     }
 });
 
+router.get('/get-all-users', authMiddleware, async(req, res) => {
+    try {
+        const allUsers = await UserModel.find({_id: { $ne: req.body.userId }});
+        if (allUsers) {
+            res.send({
+                message: 'all users fetched successfully',
+                success: true,
+                data: allUsers
+            });
+        }
+    }
+    catch(error) {
+        res.send({
+            message: 'failed to fetch all users',
+            success: false
+        });
+    }
+});
+
 module.exports = router;
