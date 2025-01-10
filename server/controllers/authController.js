@@ -11,7 +11,7 @@ router.post('/signup', async(req, res) => {
             // just for fun purposes
             // in reality we should not return any error in this case
             // we should make the request fail and send an email to the user notifying them that someone has tried to create an account using their email
-            return res.send({
+            return res.status(400).send({
                 message: 'User already exists.',
                 success: false
             })
@@ -21,7 +21,7 @@ router.post('/signup', async(req, res) => {
         const newUser = new UserModel(req.body);
         await newUser.save();
 
-        return res.send({
+        return res.status(201).send({
             message: 'User created successfuly!',
             success: true
         });
@@ -38,7 +38,7 @@ router.post('/login', async(req, res) => {
     try {
         const user = await UserModel.findOne({ email: req.body.email });
         if (!user) {
-            return res.send({
+            return res.status(400).send({
                 message: 'user does not exists',
                 success: false,
             });
@@ -47,7 +47,7 @@ router.post('/login', async(req, res) => {
         const userPassword = user.password;
         const isPasswordCorrect = await bcrypt.compare(req.body.password, userPassword);
         if (!isPasswordCorrect) {
-            return res.send({
+            return res.status(400).send({
                 message: 'Invalid email or password',
                 success: false,
             });
@@ -61,7 +61,7 @@ router.post('/login', async(req, res) => {
         });
     }
     catch(error) {
-        res.send({
+        res.status(400).send({
             message: error.message,
             success:false,
         });

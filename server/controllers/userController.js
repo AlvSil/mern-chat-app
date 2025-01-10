@@ -14,7 +14,7 @@ router.get('/get-logged-user', authMiddleware, async(req, res) => {
         }
     }
     catch(error) {
-        res.send({
+        res.status(400).send({
             message: 'failed to fetch user',
             success: false
         });
@@ -33,7 +33,7 @@ router.get('/get-all-users', authMiddleware, async(req, res) => {
         }
     }
     catch(error) {
-        res.send({
+        res.status(400).send({
             message: 'failed to fetch all users',
             success: false
         });
